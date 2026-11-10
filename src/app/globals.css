@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/*
+ * RECOMP design tokens
+ * --------------------
+ * Single source of truth for colour, type, radius, shadow and layout.
+ * Every token becomes a Tailwind utility (e.g. bg-canvas, text-ink-muted,
+ * rounded-card, shadow-card, text-timer). Light theme only for v1.
+ */
+
+@theme {
+  /* Neutrals */
+  --color-canvas: #f7f6f3; /* app background, off-white */
+  --color-surface: #ffffff; /* cards */
+  --color-surface-muted: #f1eff4; /* inset areas, hover */
+  --color-line: #e6e3ea; /* borders, dividers */
+  --color-line-strong: #d3cfda;
+
+  --color-ink: #1f1d24; /* primary text, charcoal */
+  --color-ink-soft: #46434d; /* secondary text */
+  --color-ink-muted: #6e6a77; /* captions, meta (4.9:1 on canvas) */
+  --color-ink-faint: #9a96a3; /* disabled, placeholders */
+
+  /* Accent: deep purple → lavender */
+  --color-accent-50: #f5f2fd;
+  --color-accent-100: #ebe5fb;
+  --color-accent-200: #d6cbf6;
+  --color-accent-300: #b8a6ee;
+  --color-accent-400: #957be2;
+  --color-accent-500: #7556d4;
+  --color-accent-600: #5d3fbb; /* primary actions (7:1 on white) */
+  --color-accent-700: #4a3197;
+  --color-accent-800: #382574;
+  --color-accent-900: #271a52;
+
+  /* Semantic status (schedule + feedback) */
+  --color-success: #2e7d55;
+  --color-success-soft: #e5f3eb;
+  --color-warning: #9a6512;
+  --color-warning-soft: #fbf0dc;
+  --color-danger: #b4323f;
+  --color-danger-soft: #fbe7e9;
+  --color-info: var(--color-accent-600);
+  --color-info-soft: var(--color-accent-50);
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+
+  --text-display: 2.25rem;
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.025em;
+  --text-display--font-weight: 700;
+
+  --text-title: 1.5rem;
+  --text-title--line-height: 1.2;
+  --text-title--letter-spacing: -0.02em;
+  --text-title--font-weight: 650;
+
+  --text-heading: 1.125rem;
+  --text-heading--line-height: 1.35;
+  --text-heading--letter-spacing: -0.01em;
+  --text-heading--font-weight: 600;
+
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.4;
+
+  --text-overline: 0.6875rem;
+  --text-overline--line-height: 1.3;
+  --text-overline--letter-spacing: 0.08em;
+  --text-overline--font-weight: 600;
+
+  /* Workout timer: readable from across a room on a desktop monitor */
+  --text-timer: clamp(6rem, 16vw, 15rem);
+  --text-timer--line-height: 0.95;
+  --text-timer--letter-spacing: -0.04em;
+  --text-timer--font-weight: 700;
+
+  --text-metric: 2rem;
+  --text-metric--line-height: 1.1;
+  --text-metric--letter-spacing: -0.02em;
+  --text-metric--font-weight: 650;
+
+  /* Radius */
+  --radius-card: 1.25rem;
+  --radius-control: 0.875rem;
+  --radius-chip: 999px;
+
+  /* Elevation (subtle) */
+  --shadow-card: 0 1px 2px rgb(31 29 36 / 0.04), 0 4px 16px -6px rgb(31 29 36 / 0.08);
+  --shadow-raised: 0 2px 4px rgb(31 29 36 / 0.05), 0 12px 32px -10px rgb(31 29 36 / 0.16);
+  --shadow-nav: 0 -1px 0 rgb(31 29 36 / 0.06), 0 -8px 24px -12px rgb(31 29 36 / 0.12);
+
+  /* Layout */
+  --spacing-sidebar: 15.5rem;
+  --spacing-rail: 5rem;
+  --spacing-tabbar: 4.25rem;
+  --container-content: 72rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-canvas text-ink font-sans antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Visible, consistent keyboard focus for every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+/* Safe-area helpers for iPhone (requires viewport-fit=cover). */
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
