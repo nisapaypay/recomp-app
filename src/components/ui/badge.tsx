@@ -38,16 +38,20 @@ const statusTone: Record<ScheduleStatus, Tone> = {
   upcoming: "neutral",
   today: "accent",
   completed: "success",
+  late: "warning",
   missed: "danger",
   rest: "neutral",
+  not_configured: "neutral",
 };
 
 const statusLabel: Record<ScheduleStatus, string> = {
   upcoming: "Upcoming",
   today: "Today",
   completed: "Completed",
+  late: "Late",
   missed: "Missed",
   rest: "Rest",
+  not_configured: "Not configured",
 };
 
 /** Schedule status chip. Always renders a text label, never colour alone. */

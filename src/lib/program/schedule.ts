@@ -52,7 +52,26 @@ export const PROGRAM_WEEKS = 12;
 /** Official body-measurement weeks. */
 export const MEASUREMENT_WEEKS = [1, 4, 8, 12] as const;
 
-export type ScheduleStatus = "upcoming" | "today" | "completed" | "missed" | "rest";
+/**
+ * late   = past, not done, still in the same program week (catch-up available)
+ * missed = past, not done, an earlier program week (catch-up still possible for strength)
+ */
+export type ScheduleStatus = "upcoming" | "today" | "completed" | "late" | "missed" | "rest" | "not_configured";
+
+/**
+ * Thursday recovery can't be logged until its routine is approved by the
+ * owner (Phase 9). Until then recovery days are "Not configured": never
+ * counted as planned, completed, late or missed. Flip to true when the
+ * recovery routine ships.
+ */
+export const RECOVERY_CONFIGURED = false;
+
+/** Activities that count toward completion (planned / done). */
+export function countsTowardCompletion(activity: ActivityType): boolean {
+  if (activity === "rest") return false;
+  if (activity === "recovery") return RECOVERY_CONFIGURED;
+  return true;
+}
 
 export function isStrengthDay(activity: ActivityType): boolean {
   return (

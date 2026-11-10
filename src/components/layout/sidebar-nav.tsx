@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_ITEMS, isNavItemActive, type NavItem } from "@/lib/navigation";
 import { cn } from "@/lib/utils/cn";
+import { SignOutButton } from "@/components/auth/sign-out-button";
 import { Brand } from "./brand";
 
 const primary = NAV_ITEMS.filter((item) => item.href !== "/settings");
@@ -16,7 +17,11 @@ const secondary = NAV_ITEMS.filter((item) => item.href === "/settings");
  * Hidden below 768px, where the mobile header + tab bar take over.
  */
 export function SidebarNav() {
-  const pathname = usePathname();
+  return <SidebarNavView pathname={usePathname()} />;
+}
+
+/** Pathname-independent render; `pathname` null = no active item (static shell). */
+export function SidebarNavView({ pathname }: { pathname: string | null }) {
 
   return (
     <aside
@@ -33,13 +38,16 @@ export function SidebarNav() {
       <nav aria-label="Main" className="flex flex-1 flex-col justify-between px-3 pb-5 lg:px-4">
         <ul className="space-y-1">
           {primary.map((item) => (
-            <SidebarLink key={item.href} item={item} active={isNavItemActive(pathname, item.href)} />
+            <SidebarLink key={item.href} item={item} active={pathname !== null && isNavItemActive(pathname, item.href)} />
           ))}
         </ul>
         <ul className="space-y-1 border-t border-line pt-4">
           {secondary.map((item) => (
-            <SidebarLink key={item.href} item={item} active={isNavItemActive(pathname, item.href)} />
+            <SidebarLink key={item.href} item={item} active={pathname !== null && isNavItemActive(pathname, item.href)} />
           ))}
+          <li>
+            <SignOutButton />
+          </li>
         </ul>
       </nav>
     </aside>

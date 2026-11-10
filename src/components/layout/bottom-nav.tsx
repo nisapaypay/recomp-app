@@ -12,7 +12,11 @@ const tabs = NAV_ITEMS.filter((item) => item.inMobileTabBar);
  * respects the home-indicator safe area. Settings is in the mobile header.
  */
 export function BottomNav() {
-  const pathname = usePathname();
+  return <BottomNavView pathname={usePathname()} />;
+}
+
+/** Pathname-independent render; `pathname` null = no active tab (static shell). */
+export function BottomNavView({ pathname }: { pathname: string | null }) {
 
   return (
     <nav
@@ -21,7 +25,7 @@ export function BottomNav() {
     >
       <ul className="mx-auto grid h-tabbar max-w-lg grid-cols-5">
         {tabs.map((item) => {
-          const active = isNavItemActive(pathname, item.href);
+          const active = pathname !== null && isNavItemActive(pathname, item.href);
           const Icon = item.icon;
           return (
             <li key={item.href} className="flex">

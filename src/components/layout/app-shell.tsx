@@ -1,7 +1,9 @@
-import type { ReactNode } from "react";
-import { BottomNav } from "./bottom-nav";
-import { MobileHeader } from "./mobile-header";
-import { SidebarNav } from "./sidebar-nav";
+import { Suspense, type ReactNode } from "react";
+import { SessionWatcher } from "@/components/auth/session-watcher";
+import { ReminderAgent } from "@/components/reminders/reminder-agent";
+import { BottomNav, BottomNavView } from "./bottom-nav";
+import { MobileHeader, MobileHeaderView } from "./mobile-header";
+import { SidebarNav, SidebarNavView } from "./sidebar-nav";
 
 /**
  * Main application frame.
@@ -20,17 +22,27 @@ export function AppShell({ children }: { children: ReactNode }) {
       >
         Skip to content
       </a>
-      <SidebarNav />
-      <MobileHeader />
+      {/* usePathname() is request data on dynamic routes: the static shell renders
+          the nav without an active item, and the highlight streams in. */}
+      <Suspense fallback={<SidebarNavView pathname={null} />}>
+        <SidebarNav />
+      </Suspense>
+      <Suspense fallback={<MobileHeaderView pathname={null} />}>
+        <MobileHeader />
+      </Suspense>
       <div className="md:pl-rail lg:pl-sidebar">
         <main
           id="main"
           className="pb-[calc(var(--spacing-tabbar)+env(safe-area-inset-bottom)+1.5rem)] md:pb-12"
         >
+          <ReminderAgent />
           {children}
         </main>
       </div>
-      <BottomNav />
+      <Suspense fallback={<BottomNavView pathname={null} />}>
+        <BottomNav />
+      </Suspense>
+      <SessionWatcher />
     </div>
   );
 }

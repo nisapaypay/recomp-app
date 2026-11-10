@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { PwaAgent } from "@/components/pwa/pwa-agent";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
   description: "Personal 12-week body recomposition program and workout tracker.",
   applicationName: "RECOMP",
   appleWebApp: { capable: true, title: "RECOMP", statusBarStyle: "default" },
+  icons: { apple: "/icons/apple-touch-icon.png" },
   robots: { index: false, follow: false }, // private personal app
 };
 
@@ -33,7 +35,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="min-h-dvh">{children}</body>
+      <body className="min-h-dvh">
+        {children}
+        <PwaAgent />
+      </body>
     </html>
   );
 }

@@ -9,8 +9,12 @@ import { Brand } from "./brand";
 
 /** Compact top bar for phones: brand + Settings shortcut. */
 export function MobileHeader() {
-  const pathname = usePathname();
-  const settingsActive = isNavItemActive(pathname, "/settings");
+  return <MobileHeaderView pathname={usePathname()} />;
+}
+
+/** Pathname-independent render; `pathname` null = nothing highlighted (static shell). */
+export function MobileHeaderView({ pathname }: { pathname: string | null }) {
+  const settingsActive = pathname !== null && isNavItemActive(pathname, "/settings");
 
   return (
     <header className="sticky top-0 z-20 border-b border-line/70 bg-canvas/85 pt-safe backdrop-blur-lg md:hidden">
