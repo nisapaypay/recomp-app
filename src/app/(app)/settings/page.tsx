@@ -63,7 +63,7 @@ export default function SettingsPage() {
 
       <PageSection
         title="Reminders"
-        description="Shown inside RECOMP when they're due; browser notifications are optional extras."
+        description="Shown inside Recomp Nisa when they're due; browser notifications are optional extras."
       >
         <Card>
           <Suspense fallback={<AccountSkeleton />}>
@@ -72,7 +72,7 @@ export default function SettingsPage() {
         </Card>
       </PageSection>
 
-      <PageSection title="Install app" description="Use RECOMP like an app on iPhone, Mac or PC.">
+      <PageSection title="Install app" description="Use Recomp Nisa like an app on iPhone, Mac or PC.">
         <Card>
           <InstallCard />
         </Card>

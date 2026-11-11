@@ -15,12 +15,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "RECOMP",
-    template: "%s · RECOMP",
+    default: "Recomp Nisa",
+    template: "%s · Recomp Nisa",
   },
   description: "Personal 12-week body recomposition program and workout tracker.",
-  applicationName: "RECOMP",
-  appleWebApp: { capable: true, title: "RECOMP", statusBarStyle: "default" },
+  applicationName: "Recomp Nisa",
+  appleWebApp: { capable: true, title: "Recomp Nisa", statusBarStyle: "default" },
   icons: { apple: "/icons/apple-touch-icon.png" },
   robots: { index: false, follow: false }, // private personal app
 };

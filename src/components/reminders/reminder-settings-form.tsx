@@ -49,7 +49,7 @@ export function ReminderSettingsForm({ initial }: { initial: ReminderSettings })
   }
 
   async function test() {
-    const ok = await showReminderNotification({ id: `test:${Date.now()}`, kind: "workout", title: "RECOMP reminder", body: "Notifications work on this device.", href: "/dashboard" });
+    const ok = await showReminderNotification({ id: `test:${Date.now()}`, kind: "workout", title: "Recomp Nisa reminder", body: "Notifications work on this device.", href: "/dashboard" });
     setStatus(ok ? { tone: "success", text: "Test notification sent." } : { tone: "danger", text: "This browser didn't show the notification." });
   }
 
@@ -108,7 +108,7 @@ export function ReminderSettingsForm({ initial }: { initial: ReminderSettings })
           Browser notifications
         </p>
         <p className="mt-1 text-sm text-ink-muted">
-          Reminders always appear inside RECOMP. Notifications are extra and only arrive while RECOMP is open or
+          Reminders always appear inside Recomp Nisa. Notifications are extra and only arrive while Recomp Nisa is open or
           running in the background — without a push server they can&apos;t fire when the app is fully closed.
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -123,7 +123,7 @@ export function ReminderSettingsForm({ initial }: { initial: ReminderSettings })
             <span className="text-sm text-ink-muted">Blocked in this browser&apos;s settings — in-app reminders still work.</span>
           ) : (
             <span className="text-sm text-ink-muted">
-              Not supported here — in-app reminders still work. On iPhone, notifications need RECOMP installed to the Home Screen (iOS 16.4+).
+              Not supported here — in-app reminders still work. On iPhone, notifications need Recomp Nisa installed to the Home Screen (iOS 16.4+).
             </span>
           )}
         </div>

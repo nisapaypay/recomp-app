@@ -35,12 +35,12 @@ export function Brand({
     <Link
       href="/dashboard"
       className={cn("flex items-center gap-2.5 rounded-control", className)}
-      aria-label="RECOMP — go to dashboard"
+      aria-label="Recomp Nisa — go to dashboard"
     >
       <BrandMark />
       {showWordmark ? (
         <span className="text-[1.0625rem] font-bold tracking-[0.14em] text-ink">
-          RECOMP
+          RECOMP NISA
         </span>
       ) : null}
     </Link>

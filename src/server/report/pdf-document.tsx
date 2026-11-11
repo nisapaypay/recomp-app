@@ -97,16 +97,16 @@ function MiniChart({ records, metric }: { records: MeasurementRecord[]; metric: 
 function ReportPdf({ data, measurements, photos }: { data: ReportData; measurements: MeasurementRecord[]; photos: PdfPhoto[] | null }) {
   const { kind, program, timing, completion, training, walking, body, timeline } = data;
   const pct = completion.total.planned > 0 ? Math.round((completion.total.completed / completion.total.planned) * 100) : 0;
-  const title = kind === "final" ? "RECOMP — 12 Week Progress Report" : "RECOMP — 12 Week Progress Report (interim)";
+  const title = kind === "final" ? "Recomp Nisa — 12 Week Progress Report" : "Recomp Nisa — 12 Week Progress Report (interim)";
   const comparisons = [4, 8, 12];
   const types = ["front", "side", "back"] as const;
 
   return (
-    <Document title={t(title)} author="RECOMP" subject="12-week body recomposition progress report">
+    <Document title={t(title)} author="Recomp Nisa" subject="12-week body recomposition progress report">
       <Page size="A4" style={s.page}>
         <View style={s.brandRow}>
           <View style={s.brandMark} />
-          <Text style={s.brand}>RECOMP</Text>
+          <Text style={s.brand}>RECOMP NISA</Text>
         </View>
         <Text style={s.title}>{t(title)}</Text>
         <Text style={s.sub}>
@@ -260,7 +260,7 @@ function ReportPdf({ data, measurements, photos }: { data: ReportData; measureme
         ) : null}
 
         <View style={s.footer} fixed>
-          <Text>RECOMP · personal report · {t(formatDate(data.generatedOn, "medium"))}</Text>
+          <Text>Recomp Nisa · personal report · {t(formatDate(data.generatedOn, "medium"))}</Text>
           <Text render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} />
         </View>
       </Page>

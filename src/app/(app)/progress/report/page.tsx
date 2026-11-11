@@ -52,7 +52,7 @@ async function Report() {
       <header className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="flex items-center gap-2 text-overline uppercase text-accent-600">
-            RECOMP · 12-week program
+            Recomp Nisa · 12-week program
             <Badge tone={kind === "final" ? "success" : "warning"}>{kind === "final" ? "Final report" : "Interim report"}</Badge>
           </p>
           <h1 className="mt-1 text-title md:text-display">{kind === "final" ? "12-Week Progress Report" : "Progress report so far"}</h1>

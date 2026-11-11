@@ -84,7 +84,7 @@ export function timeToMinutes(value: string): number {
 }
 
 const WORKOUT_TEXT: Record<"strength" | "walking" | "recovery", (label: string) => string> = {
-  strength: (l) => `${l} is on today's plan. Open RECOMP to start when you're ready.`,
+  strength: (l) => `${l} is on today's plan. Open Recomp Nisa to start when you're ready.`,
   walking: (l) => `${l}: today's walk is waiting. Log it after your walk.`,
   recovery: () => "Recovery day — keep it light with gentle movement and stretching.",
 };

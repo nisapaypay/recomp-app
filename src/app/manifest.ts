@@ -3,8 +3,8 @@ import type { MetadataRoute } from "next";
 /** Web app manifest → served at /manifest.webmanifest. */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "RECOMP",
-    short_name: "RECOMP",
+    name: "Recomp Nisa",
+    short_name: "Recomp Nisa",
     description: "Personal 12-week body recomposition program and workout tracker.",
     id: "/",
     start_url: "/",

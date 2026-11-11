@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
   }
 
   const pdf = await renderReportPdf(data, measurements, photos);
-  const name = `recomp-${data.kind === "final" ? "12-week-report" : "interim-report"}-${data.generatedOn}.pdf`;
+  const name = `recomp-nisa-${data.kind === "final" ? "12-week-report" : "interim-report"}-${data.generatedOn}.pdf`;
   return new NextResponse(new Uint8Array(pdf), {
     headers: {
       "Content-Type": "application/pdf",

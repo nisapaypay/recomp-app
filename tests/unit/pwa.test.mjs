@@ -84,8 +84,8 @@ function pngSize(buf) {
 
 test("manifest: installable fields and existing icons of the right size", async () => {
   const m = manifest();
-  assert.equal(m.name, "RECOMP");
-  assert.equal(m.short_name, "RECOMP");
+  assert.equal(m.name, "Recomp Nisa");
+  assert.equal(m.short_name, "Recomp Nisa");
   assert.equal(m.start_url, "/");
   assert.equal(m.display, "standalone");
   assert.match(m.theme_color, /^#[0-9a-f]{6}$/i);
